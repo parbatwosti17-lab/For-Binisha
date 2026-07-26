@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 2 Months | Parbat & Binisha ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0f0c20; color: #fff; font-family: 'Poppins', sans-serif; min-height: 100vh; overflow-x: hidden; position: relative; }
+    #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+    .container { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; padding: 30px 20px; text-align: center; }
+    .header-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 24px; padding: 40px 20px; box-shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.2); margin-bottom: 30px; }
+    h1 { font-family: 'Dancing Script', cursive; font-size: 3.2rem; background: linear-gradient(45deg, #ff4d6d, #ffb3c1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+    .couple-names { font-size: 1.4rem; letter-spacing: 2px; color: #ff8fa3; margin-bottom: 20px; text-transform: uppercase; font-weight: 600; }
+    
+    .gallery-title { font-size: 1.5rem; color: #ffb3c1; margin: 30px 0 15px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    .photo-card { position: relative; border-radius: 16px; overflow: hidden; border: 2px solid rgba(255, 179, 193, 0.3); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    .photo-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
+    
+    .letter-card { background: rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 30px; border-left: 4px solid #ff4d6d; text-align: left; line-height: 1.8; font-size: 1.05rem; color: #f1f1f1; margin-bottom: 30px; white-space: pre-line; }
+    
+    .btn-surprise { background: linear-gradient(45deg, #ff4d6d, #c9184a); color: #fff; border: none; padding: 15px 35px; font-size: 1.1rem; font-weight: 600; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 20px rgba(255, 77, 109, 0.5); }
+    .surprise-box { display: none; margin-top: 25px; padding: 20px; background: rgba(255, 77, 109, 0.15); border-radius: 16px; font-size: 1.1rem; color: #ffb3c1; }
+    .music-container { margin: 20px 0; }
+    .music-btn { background: rgba(255, 255, 255, 0.15); border: 1px solid #ff8fa3; color: #fff; padding: 8px 18px; border-radius: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="container">
+    <div class="header-card">
+      <h1>Happy 2 Months Anniversary! 🥹🫶🏼</h1>
+      <div class="couple-names">Parbat Wosti ❤️ Binisha Lamsal</div>
+      <p style="color: #d8b4fe;">"2 Months of Pure Love & Care"</p>
+      <div class="music-container">
+        <audio id="loveSong" loop>
+          <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-acoustic-guitar-112349.mp3" type="audio/mpeg">
+        </audio>
+        <button class="music-btn" onclick="toggleMusic()">🎵 Play/Pause Music</button>
+      </div>
+    </div>
+
+    <h2 class="gallery-title">Memories of My Bacha ✨</h2>
+    <div class="gallery">
+      <div class="photo-card"><img src="./6978.jpg" alt="Binisha"></div>
+      <div class="photo-card"><img src="./8692.jpg" alt="Binisha"></div>
+      <div class="photo-card"><img src="./6894.jpg" alt="Binisha"></div>
+    </div>
+
+    <!-- Main Message Box -->
+    <div class="letter-card" id="messageBox"></div>
+
+    <button class="btn-surprise" onclick="openSurprise()">Click Here For A Special Note ✨</button>
+    <div id="surprise" class="surprise-box">
+      <p>"Distance is just a test, our love wins in the end. Can't wait to meet you soon, mero bacha! 💖✈️"</p>
+    </div>
+  </div>
+
+  <script>
+    // Audio Toggle
+    const song = document.getElementById('loveSong');
+    function toggleMusic() { song.paused ? song.play() : song.pause(); }
+
+    // Surprise Box
+    function openSurprise() {
+      const box = document.getElementById('surprise');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Typewriter Effect for Message
+    const text = `Happy 2 Months Mero Binisha Bacha! 🥹🫶🏼
+
+Kati chito 2 mahina bitechha, thahai bhayena. Timro yo pyaro message padhera mero din nai bright bhayo! Timle garne care, tyo understanding nature, ra timro sabai bakwas kura haru sunna malai sadhai manparchha.
+
+Sano sano kura ma jhagada bhaye pani hami kahile xutine chhainaum. Yo long-distance pani xittai short distance ma badlinechha, bas xittai vetna pamm mero yei wish chha!
+
+Jasto sukai situation ma pani ma sadhai timrai hunechhu. I love you so much forever mero sanu, mero bacha! ♾️💖💋`;
+
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("messageBox").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 35);
+      }
+    }
+    window.onload = typeWriter;
+
+    // Floating Hearts
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth, height = canvas.height = window.innerHeight;
+    class Heart {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 100;
+        this.size = Math.random() * 12 + 8;
+        this.speedY = Math.random() * 1.5 + 0.8;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.5;
+        this.opacity = Math.random() * 0.7 + 0.3;
+      }
+      update() { this.y -= this.speedY; this.x += this.speedX; if (this.y < -20) this.reset(); }
+      draw() {
+        ctx.save(); ctx.globalAlpha = this.opacity; ctx.fillStyle = '#ff4d6d'; ctx.beginPath();
+        let topCurveHeight = this.size * 0.3;
+        ctx.moveTo(this.x, this.y + topCurveHeight);
+        ctx.bezierCurveTo(this.x, this.y, this.x - this.size / 2, this.y, this.x - this.size / 2, this.y + topCurveHeight);
+        ctx.bezierCurveTo(this.x - this.size / 2, this.y + (this.size + topCurveHeight) / 2, this.x, this.y + this.size, this.x, this.y + this.size);
+        ctx.bezierCurveTo(this.x, this.y + this.size, this.x + this.size / 2, this.y + (this.size + topCurveHeight) / 2, this.x + this.size / 2, this.y + topCurveHeight);
+        ctx.bezierCurveTo(this.x + this.size / 2, this.y, this.x, this.y, this.x, this.y + topCurveHeight);
+        ctx.closePath(); ctx.fill(); ctx.restore();
+      }
+    }
+    const hearts = Array.from({ length: 30 }, () => new Heart());
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      hearts.forEach(h => { h.update(); h.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
